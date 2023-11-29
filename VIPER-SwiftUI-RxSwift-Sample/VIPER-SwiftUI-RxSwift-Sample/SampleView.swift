@@ -22,6 +22,11 @@ struct SampleView: View {
     @ObservedObject var dataSource: DataSource
     
     var body: some View {
+        Button(action: {
+            delegate?.SampleViewDidTapOrderButton()
+        }, label: {
+            Text("注文する")
+        })
     }
 }
 
