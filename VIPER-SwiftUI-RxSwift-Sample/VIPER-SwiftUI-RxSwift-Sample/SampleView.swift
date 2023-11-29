@@ -8,6 +8,9 @@
 import SwiftUI
 import RxSwift
 
+protocol SampleViewDelegate: AnyObject {
+    func SampleViewDidTapOrderButton()
+}
 
 struct SampleView: View {
     class DataSource: ObservableObject, ReactiveCompatible {
@@ -15,6 +18,7 @@ struct SampleView: View {
         @Published var cartProducts: [String] = []
     }
     
+    weak var delegate: SampleViewDelegate?
     @ObservedObject var dataSource: DataSource
     
     var body: some View {
