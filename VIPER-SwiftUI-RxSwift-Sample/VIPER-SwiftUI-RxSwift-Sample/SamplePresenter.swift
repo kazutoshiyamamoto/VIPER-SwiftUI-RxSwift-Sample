@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+class Presenter {
+    var isOrderProcessing = BehaviorRelay<Bool>(value: false)
+    var cartProducts = BehaviorRelay<[String]>(value: [])
+}
