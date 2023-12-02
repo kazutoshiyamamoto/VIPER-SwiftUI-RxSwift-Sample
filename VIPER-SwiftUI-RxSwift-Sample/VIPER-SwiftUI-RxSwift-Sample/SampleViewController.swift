@@ -7,9 +7,16 @@
 
 import UIKit
 import SwiftUI
+import RxSwift
+import RxCocoa
 
 class SampleViewController: UIViewController {
     private var dataSource: SampleView.DataSource = .init()
+    
+    private var presenter = Presenter()
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +30,12 @@ class SampleViewController: UIViewController {
         hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
         hostingVC.view.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         hostingVC.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        presenter.cartProducts
+            .bind(to: dataSource.rx.cartProducts)
+            .disposed(by: disposeBag)
     }
+}
 
 extension SampleViewController: SampleViewDelegate {
     func SampleViewDidTapOrderButton() {
