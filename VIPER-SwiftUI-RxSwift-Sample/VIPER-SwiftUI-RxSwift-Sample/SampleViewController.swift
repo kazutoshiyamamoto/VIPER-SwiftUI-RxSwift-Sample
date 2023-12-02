@@ -25,6 +25,9 @@ class SampleViewController: UIViewController {
         hostingVC.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
-
+extension SampleViewController: SampleViewDelegate {
+    func SampleViewDidTapOrderButton() {
+        print("SampleViewDidTapOrderButton")
+    }
 }
 
