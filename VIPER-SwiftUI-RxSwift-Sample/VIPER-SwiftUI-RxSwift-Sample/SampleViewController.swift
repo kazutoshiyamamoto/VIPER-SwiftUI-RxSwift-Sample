@@ -9,11 +9,12 @@ import UIKit
 import SwiftUI
 
 class SampleViewController: UIViewController {
-
     private var dataSource: SampleView.DataSource = .init()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .systemBackground
+        
         let rootView = SampleView(delegate: self, dataSource: dataSource)
         let hostingVC = UIHostingController(rootView: rootView)
         addChild(hostingVC)
